@@ -29,10 +29,12 @@ describe("gifsoldapp", () => {
     console.log('GIF Count', account.totalGifs.toString());
 
     // addGif
-    await program.methods.addGif().accounts({
+    await program.methods.addGif("https://media1.tenor.com/m/gyMnXhvx_lcAAAAC/seriously-jacob-black.gif").accounts({
       baseAccount: baseAccount.publicKey,
+      user: provider.wallet.publicKey,
     }).rpc();
     account = await program.account.baseAccount.fetch(baseAccount.publicKey)
     console.log('GIF Count', account.totalGifs.toString());
+    console.log('GIF List', account.gifList);
   });
 });
