@@ -9,6 +9,7 @@ pub mod gifsoldapp {
     pub fn start_stuff_off(ctx: Context<StartStuffOff>) -> ProgramResult {
         let base_account = &mut ctx.accounts.base_account;
         base_account.total_gifs = 0;
+        base_account.gif_list = Vec::new(); // To Always Initialize the vector
         Ok(())
     }
     pub fn add_gif(ctx: Context<AddGif>, gif_link: String) -> ProgramResult {
